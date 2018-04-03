@@ -1,0 +1,14 @@
+version: '2'
+services:
+    gohomenotes-app:
+        image: gohomenotes
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://gohomenotes-postgresql:5432/gohomenotes
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    gohomenotes-postgresql:
+        extends:
+            file: postgresql.yml
+            service: gohomenotes-postgresql
